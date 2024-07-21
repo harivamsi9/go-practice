@@ -1,0 +1,59 @@
+// package main
+
+// import (
+// 	"fmt"
+// 	"net/http"
+// 	"sync"
+// 	"time"
+// )
+
+// func returnType(url string) {
+// 	resp, err := http.Get(url)
+// 	if err != nil {
+// 		fmt.Println("ERROR: ", err)
+// 		return
+// 	}
+// 	defer resp.Body.Close()
+// 	ctype := resp.Header.Get("content-type")
+// 	fmt.Println(ctype)
+// }
+
+// func Serial(urls []string) {
+// 	now := time.Now()
+
+// 	for _, url := range urls {
+// 		returnType(url)
+// 	}
+
+// 	fmt.Println("Time Took: ", time.Since(now))
+// }
+
+// // GO ROUTINES WAY
+// func sitesConcurrent(urls []string) {
+// 	now := time.Now()
+// 	var wg sync.WaitGroup
+
+// 	for _, url := range urls {
+// 		wg.Add(1)
+// 		go func(url string) {
+// 			returnType(url)
+// 			wg.Done()
+// 		}(url)
+// 	}
+// 	wg.Wait()
+// 	fmt.Println("Time Took: ", time.Since(now))
+
+// }
+
+// func main() {
+// 	urls := []string{
+// 		"https://google.com",
+// 		"https://go.dev/",
+// 		"https://www.meta.com/",
+// 		"https://api.github.com",
+// 	}
+
+// 	Serial(urls)
+// 	sitesConcurrent(urls)
+
+// }
